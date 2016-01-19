@@ -1,4 +1,4 @@
-.vagrant/
+.vagrant
 nbproject/
 vendor/
 .project
@@ -7,3 +7,4 @@ vendor/
 .idea/
 composer.phar
 composer.lock
+*~
