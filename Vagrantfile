@@ -24,9 +24,7 @@ a2dissite 000-default
 a2ensite skeleton-zf
 service apache2 restart
 cd /var/www/zf
-curl -Ss https://getcomposer.org/installer | php
-php composer.phar install --no-progress
-echo "** [ZEND] Visit http://localhost:8085 in your browser for to view the application **"
+echo "** [ZEND] http://zf2doc.local:8085/ **"
 SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
