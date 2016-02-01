@@ -62,4 +62,4 @@ echo "############ Doctrine ORM data Fixture para importar dados de teste ######
 
 
 
-echo "** [ZEND] http://zf2doc.local:8085/ **";
+echo "** [ZEND] http://zf2doc.local:8085 **";
