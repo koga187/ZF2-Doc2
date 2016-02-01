@@ -1,3 +1,4 @@
+#!/bin/sh
 
 DOCUMENT_ROOT_ZEND="/var/www/zf/public";
 
@@ -12,8 +13,8 @@ echo "############ Instalando php-cli ############";
 sudo apt-get install -y php5-cli;
 echo "############ Instalando php ############";
 sudo apt-get install -y php5;
-echo "############ Instalando php-intl ############";
-sudo apt-get install -y php5-intl;
+echo "############ Instalando php-intl php5-mysql############";
+sudo apt-get install -y php5-intl php5-mysql;
 echo "############ Instalando libapache2-mod-php5 ############";
 sudo apt-get install -y libapache2-mod-php5;
 
@@ -47,13 +48,14 @@ sudo mv composer.phar /usr/bin/composer;
 echo "############ Executa o composer do projeto ############"
 php composer.phar install --no-progress;
 echo "############ Instalando Mysql-Server ############"
-sudo apt-get install -y mysql-server mysql-common mysql-client;
+export DEBIAN_FRONTEND=noninteractive;
+sudo -E apt-get -q -y install mysql-server;
 sudo service mysql restart;
 echo "############ Trocando a senha do Mysql ############"
-sudo mysqlAdmin -uroot password root
+sudo mysqladmin -uroot password root
 echo "############ Criando banco do projeto ############"
-mysql -uroot -p root;
-CREATE DATABASE zf2_base ENCODE utf8;
+mysql -uroot -proot;
+CREATE DATABASE zf2_base DEFAULT CHARACTER SET utf8;
 exit;
 echo "############ Doctrine ORM annotations para importação do banco ############"
 echo "############ Doctrine ORM data Fixture para importar dados de teste ############"
