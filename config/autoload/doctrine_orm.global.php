@@ -2,7 +2,7 @@
 
 return array(
     'doctrine' => array(
-       'conection' => array(
+       'connection' => array(
            'orm_default' => array(//Nome Conexão
                'driverClass' => 'Doctrine\DBAL\Driver\PDOMysql\Driver',
                'params' => array(
