@@ -24,6 +24,8 @@ a2dissite 000-default
 a2ensite skeleton-zf
 service apache2 restart
 cd /var/www/zf
+-curl -Ss https://getcomposer.org/installer | php		 +echo "** [ZEND] http://zf2doc.local:8085/ **"
+ -php composer.phar install --no-progress
 echo "** [ZEND] http://zf2doc.local:8085/ **"
 SCRIPT
 
@@ -32,7 +34,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8085
   config.vm.hostname = "skeleton-zf.local"
   config.vm.synced_folder '.', '/var/www/zf'
-  config.vm.provision 'shell', inline: @script
+  #config.vm.provision 'shell', inline: @script
+  config.vm.provision "shell", path: "ssh/apache.sh"
 
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
