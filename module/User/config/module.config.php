@@ -50,9 +50,9 @@ return array(
                     __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
                 )
             )
+        ),
+        'fixture' => array(
+            'User_fixture' => __DIR__ . '/../src/User/Fixture'
         )
-    ),
-    'data-fixture' => array(
-        'User_fixture' => __DIR__ . '/../src/User/Fixture'
     )
 );
