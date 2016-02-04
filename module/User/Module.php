@@ -9,6 +9,8 @@
 
 namespace User;
 
+use Zend\Mail\Transport\Smtp;
+use Zend\Mail\Transport\SmtpOptions;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -27,6 +29,24 @@ class Module
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
+        );
+    }
+
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'User\Mail\Transport' => function($sm) {
+                    $config = $sm->get('config');
+
+                    return new Smtp(new SmtpOptions($config['mail']));
+                },
+                'User\Service\User' => function($sm) {
+                    return new Service\User($sm->get('Doctrine\ORM\Entitymanager'),
+                                            $sm->get('User\Mail\Transport'),
+                                            $sm->get('View'));
+                }
+            )
         );
     }
 }

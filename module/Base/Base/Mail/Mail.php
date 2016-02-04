@@ -86,7 +86,7 @@ class Mail
         $this->message->addFrom($config['connection_config']['from'])
             ->addTo($this->to)
             ->setSubject($this->subject)
-            ->setBody($this->body);]
+            ->setBody($this->body);
 
         return $this;
     }

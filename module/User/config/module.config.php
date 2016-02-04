@@ -14,6 +14,16 @@ return array(
                         'action' => 'register'
                     ),
                 )
+            ),
+            'user-activate' =>array(
+                'type' => 'segment',
+                'options' => array (
+                    'route' => '/register/activate[/:key]',
+                    'defaults' => array (
+                        'controller' => 'User\Controller\Index',
+                        'action' => 'activate'
+                    )
+                )
             )
         )
     ),
